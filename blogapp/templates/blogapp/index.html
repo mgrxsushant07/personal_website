@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Section</title>
+</head>
+<style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    padding: 20px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    margin: 10px 0;
+    color: #222;
+}
+
+p {
+    color: #555;
+    font-size: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+code {
+    display: block;
+    margin: 10px auto;
+    font-size: 14px;
+    color: #666;
+    background-color: #eee;
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px auto;
+    width: 80%;
+}
+</style>
+<body>
+    <h1>Blog Section</h1>
+{% for post in posts %}
+<a href="{% url "post_detail" post.pk %}">
+    <h2>{{ post.title }}</h2>
+</a>
+    <p>{{ post.content|truncatewords:50 }}</p>
+    <code>Posted at: {{ post.created_at }}</code>
+
+<hr>
+{% endfor %}
+
+<a href="http://127.0.0.1:8000/#blogs">Back to Home</a>
+
+</body>
+</html>
